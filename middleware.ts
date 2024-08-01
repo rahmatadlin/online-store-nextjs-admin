@@ -1,5 +1,6 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 
+// Perhatikan lagi
 export default clerkMiddleware();
 
 export const config = {
