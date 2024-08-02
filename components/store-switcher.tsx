@@ -45,8 +45,6 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
     (item) => item.value === params.storeId
   );
 
-  
-
   const [open, setOpen] = useState(false);
 
   const onStoreSelect = (store: { value: string; label: string }) => {
