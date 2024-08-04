@@ -18,11 +18,9 @@ export default async function DashboardLayout({
   const store = await db.store.findFirst({
     where: {
       id: params.storeId,
-      userId
+      userId,
     },
   });
-  console.log(store, "INI MUNGKIN STORE ++++=++++++");
-  
 
   if (!store) {
     redirect("/");
