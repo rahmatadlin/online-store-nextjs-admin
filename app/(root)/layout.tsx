@@ -3,29 +3,28 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 export default async function SetupLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    const { userId } = auth()
-    if (!userId) {
-        redirect("sign-in")
-    }
+  const { userId } = auth();
+  console.log(userId, "INI USER ID ========================>");
 
-    const store = await db.store.findFirst({
-        where: {
-            userId
-        }
-    })
+  if (!userId) {
+    redirect("sign-in");
+  }
 
-    if (store) {
-        redirect(`/${store.id}`)
-    }
+  const store = await db.store.findFirst({
+    where: {
+      userId,
+    },
+  });
 
-    return (
-        <>
-        {children}
-        </>
-    )
+  console.log(store, "INI STORE ================>");
 
+  if (store) {
+    redirect(`/${store.id}`);
+  }
+
+  return <>{children}</>;
 }
