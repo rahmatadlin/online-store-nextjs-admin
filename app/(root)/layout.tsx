@@ -8,7 +8,6 @@ export default async function SetupLayout({
   children: React.ReactNode;
 }) {
   const { userId } = auth();
-  console.log(userId, "INI USER ID ========================>");
 
   if (!userId) {
     redirect("sign-in");
@@ -19,8 +18,6 @@ export default async function SetupLayout({
       userId,
     },
   });
-
-  console.log(store, "INI STORE ================>");
 
   if (store) {
     redirect(`/${store.id}`);
